@@ -2,9 +2,8 @@
   <div class="articles" v-if="has_article">
     <div class="article" v-for="article in article_list" :label="article.name" :key="article.id">
       <div class="header">
-        <h3 @click="jump(article.id)">
+        <h3 @click="jump('/detail/' + article.id)">
           {{article.title}}
-          <!--          <router-link :to="{name:'detail',params:{id:text}}">{{article.title}}</router-link>-->
         </h3>
       </div>
       <div class="info">
@@ -13,24 +12,26 @@
       <p class="auth-span"></p>
     </div>
   </div>
-  <div v-else>还没有文章</div>
+  <div v-else>没有该分类的文章</div>
 </template>
 
 <script>
   import cons from '@/components/constant';
 
   export default {
-    name: "ArticleWarp",
+    name: "CategoryList",
     data() {
       return {
-        test: 123,
         article_list: [],
         has_article: false,
       }
     },
     methods: {
-      loadArticleList() {
-        this.axios.get(cons.apis + '/article/list/?ordering=-update_date', {
+      jump(route) {
+        this.$router.push(route);
+      },
+      loadArticle() {
+        this.axios.get(cons.apis + '/article/category/articles/' + this.$route.params.id, {
           headers: {
             'Authorization': '123'
           },
@@ -38,20 +39,16 @@
         })
           .then(dat => {
             this.article_list = dat.data;
-            this.has_article = true;
+            this.has_article = true
           }).catch(err => {
           console.log(err.response);
         });
-      },
-      jump(id) {
-        this.$router.push('/detail/' + id);
       }
     },
     mounted() {
-      this.loadArticleList();
-    },
+      this.loadArticle()
+    }
   }
-
 </script>
 
 <style scoped>
@@ -101,5 +98,4 @@
     height: 17px;
     background-color: blue;
   }
-
 </style>

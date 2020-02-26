@@ -33,7 +33,7 @@
     },
     methods: {
       loadArticle() {
-        this.axios.get(cons.apis + '/article/article/' + this.$route.params.id, {
+        this.axios.get(cons.apis + '/article/detail/' + this.$route.params.id, {
           headers: {
             'Authorization': '123'
           },

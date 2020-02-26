@@ -4,11 +4,17 @@
       <li class="menu" @click="jump('/')">首页</li>
       <li class="menu">
         技术杂谈
-        <ul class="sub-menu" v-for="category in categories">
-          <li class="menu-item" @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
+        <ul class="sub-menu">
+          <li class="menu-item" v-for="category in technology_categories" :label="category.name" :key="category.id"
+              @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
         </ul>
       </li>
-      <li class="menu" @click="jump('/')">开发工具</li>
+      <li class="menu" @click="jump('/')">开发工具
+        <ul class="sub-menu">
+          <li class="menu-item" v-for="category in development_categories" :label="category.name" :key="category.id"
+              @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
+        </ul>
+      </li>
       <li class="menu" @click="jump('/')">关于自己</li>
       <li class="menu" @click="jump('/')">给我留言</li>
       <li class="menu" @click="jump('/')">赞助作者</li>
@@ -25,33 +31,49 @@
 
 <script>
   import cons from '@/components/constant';
+
   export default {
     name: "NavBarHeader",
     data() {
       return {
-        categories: [],
+        technology_categories: [],
+        development_categories: [],
       }
     },
     methods: {
       jump(route) {
         this.$router.push(route);
       },
-      getCategories() {
-        this.axios.get(cons.apis + '/article/categories', {
+      getTechnologyCategories() {
+        this.axios.get(cons.apis + '/article/categories/1', {
           headers: {
             'Authorization': '123'
           },
           responseType: 'json',
         })
           .then(dat => {
-            this.categories = dat.data;
+            this.technology_categories = dat.data;
+          }).catch(err => {
+          console.log(err.response);
+        });
+      },
+      getDevelopmentCategories() {
+        this.axios.get(cons.apis + '/article/categories/2', {
+          headers: {
+            'Authorization': '123'
+          },
+          responseType: 'json',
+        })
+          .then(dat => {
+            this.development_categories = dat.data;
           }).catch(err => {
           console.log(err.response);
         });
       },
     },
     mounted() {
-      this.getCategories()
+      this.getTechnologyCategories();
+      this.getDevelopmentCategories();
     }
   };
 
