@@ -1,0 +1,167 @@
+<template>
+  <div class="nav-header">
+    <ul class="nav-bar">
+      <li class="menu" @click="jump('/')">首页</li>
+      <li class="menu">
+        技术杂谈
+        <ul class="sub-menu" v-for="category in categories">
+          <li class="menu-item" @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
+        </ul>
+      </li>
+      <li class="menu" @click="jump('/')">开发工具</li>
+      <li class="menu" @click="jump('/')">关于自己</li>
+      <li class="menu" @click="jump('/')">给我留言</li>
+      <li class="menu" @click="jump('/')">赞助作者</li>
+      <li class="menu" @click="jump('/')">时间轴</li>
+    </ul>
+    <div>
+      <input class="search-input" placeholder="请输入关键字">
+    </div>
+    <div class="toggle-search active">
+      <i class="iconfont iconsousuo"></i>
+    </div>
+  </div>
+</template>
+
+<script>
+  import cons from '@/components/constant';
+  export default {
+    name: "NavBarHeader",
+    data() {
+      return {
+        categories: [],
+      }
+    },
+    methods: {
+      jump(route) {
+        this.$router.push(route);
+      },
+      getCategories() {
+        this.axios.get(cons.apis + '/article/categories', {
+          headers: {
+            'Authorization': '123'
+          },
+          responseType: 'json',
+        })
+          .then(dat => {
+            this.categories = dat.data;
+          }).catch(err => {
+          console.log(err.response);
+        });
+      },
+    },
+    mounted() {
+      this.getCategories()
+    }
+  };
+
+</script>
+
+<style scoped>
+  .nav-header {
+    display: flex;
+    flex-direction: row;
+    height: 52px;
+    width: 100%;
+    flex: 1;
+    background-color: #4a4a4a;
+    opacity: .9;
+    font-size: 16px;
+    line-height: 0;
+    position: relative;
+  }
+
+  .nav-bar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    height: 52px;
+    position: relative;
+  }
+
+  .menu {
+    display: flex;
+    /*flex-direction: row;*/
+    padding: 16px 30px;
+    margin-right: 1px;
+    /*min-width: 64px;*/
+    width: auto;
+    line-height: 20px;
+    text-align: -webkit-match-parent;
+    color: white;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .sub-menu {
+    display: flex;
+    line-height: 20px;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 99999;
+    width: 100%;
+    text-align: -webkit-match-parent;
+    /*background-color: blue;*/
+  }
+
+  .menu .sub-menu {
+    display: none;
+  }
+
+  .menu:hover .sub-menu {
+    display: block;
+  }
+
+  .menu-item {
+    background-color: #D56464;
+    padding: 10px 0;
+  }
+
+  li {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .search-input {
+    display: flex;
+    align-self: flex-end;
+    height: 28px;
+    margin: 10px 0;
+    line-height: 26px;
+    color: white;
+    background-color: transparent;
+  }
+
+  .toggle-search {
+    display: flex;
+    align-self: flex-end;
+    width: 52px;
+    height: 52px;
+    background: none repeat scroll 0 0 #D56464;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+
+  .toggle-search.active, .toggle-search:hover {
+    opacity: .75;
+  }
+
+  .iconsousuo {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 26px;
+    margin-left: 12px;
+    margin-right: 12px;
+
+  }
+
+</style>
