@@ -141,7 +141,7 @@
     flex-direction: row;
     height: 370px;
     width: 100%;
-    margin: 0;
+    margin: 0 0 10px 0;
     position: relative;
   }
   .left_box{

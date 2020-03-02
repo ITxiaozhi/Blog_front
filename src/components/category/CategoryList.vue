@@ -24,6 +24,15 @@
       return {
         article_list: [],
         has_article: false,
+        category_name: ''
+      }
+    },
+    watch: {
+      '$route'(to, from) { // 监听路由是否变化
+        if (to.params.name !== from.params.name) {
+          this.category_name = to.params.name
+          this.loadArticle() // 重新加载数据
+        }
       }
     },
     methods: {
@@ -31,22 +40,28 @@
         this.$router.push(route);
       },
       loadArticle() {
-        this.axios.get(cons.apis + '/article/category/articles/' + this.$route.params.id, {
+        this.axios.get(cons.apis + '/article/category/articles/' + this.category_name, {
           headers: {
             'Authorization': '123'
           },
           responseType: 'json',
         })
           .then(dat => {
-            this.article_list = dat.data;
-            this.has_article = true
+            if (dat.data) {
+              this.article_list = dat.data;
+              this.has_article = true
+            }
           }).catch(err => {
           console.log(err.response);
         });
       }
     },
     mounted() {
-      this.loadArticle()
+      this.category_name = this.$router.params.name;
+      this.loadArticle();
+    },
+    updated() {
+      // this.loadArticle()
     }
   }
 </script>
@@ -77,7 +92,7 @@
 
   .header h3 {
     font-size: 30px;
-    color: #333;
+    color: #1abc9c;
     cursor: pointer;
   }
 

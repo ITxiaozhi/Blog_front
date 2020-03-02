@@ -1,6 +1,6 @@
 <template>
   <div class="ad-warp">
-    <SlideWarp></SlideWarp>
+<!--    <SlideWarp></SlideWarp>-->
     <HotRank></HotRank>
   </div>
 </template>
@@ -19,7 +19,7 @@
   .ad-warp {
     display: flex;
     flex-direction: column;
-    margin: 0;
+    margin: 0 0 10px 0;
     top: 0;
   }
 </style>

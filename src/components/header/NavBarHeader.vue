@@ -6,13 +6,13 @@
         技术杂谈
         <ul class="sub-menu">
           <li class="menu-item" v-for="category in technology_categories" :label="category.name" :key="category.id"
-              @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
+              @click="jump('/category/'+ category.name)"><a>{{category.name}}</a></li>
         </ul>
       </li>
       <li class="menu" @click="jump('/')">开发工具
         <ul class="sub-menu">
           <li class="menu-item" v-for="category in development_categories" :label="category.name" :key="category.id"
-              @click="jump('/category/'+ category.id)"><a>{{category.name}}</a></li>
+              @click="jump('/category/'+ category.name)"><a>{{category.name}}</a></li>
         </ul>
       </li>
       <li class="menu" @click="jump('/')">关于自己</li>

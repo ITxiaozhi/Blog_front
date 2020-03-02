@@ -15,7 +15,7 @@
 
 <style scoped>
   .social {
-    margin-bottom: 10px;
+    margin: 10px 0;
     background-color: #fff;
     display: flex;
     flex-direction: row;
