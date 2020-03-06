@@ -1,24 +1,24 @@
 <template>
-  <div class="category-warp">
-    <CategoryList></CategoryList>
+  <div class="list-warp">
+    <List></List>
     <SideBar></SideBar>
   </div>
 </template>
 
 <script>
-  const CategoryList = () => import("./CategoryList");
+  const List = () => import("./List");
   const SideBar = () => import("../sidebar/SideBar");
   export default {
-    name: "CategoryWarp",
+    name: "ListWarp",
     components: {
-      "CategoryList": CategoryList,
+      "List": List,
       "SideBar": SideBar
     }
   }
 </script>
 
 <style scoped>
-  .category-warp {
+  .list-warp {
     display: flex;
     flex-direction: row;
     width: 100%;

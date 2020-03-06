@@ -18,71 +18,71 @@
 </template>
 
 <script>
-import cons from '@/components/constant';
+  import cons from '@/components/constant';
 
-let marked = require('marked');
-let hljs = require('highlight.js');
-import 'highlight.js/styles/gruvbox-light.css';
+  let marked = require('marked');
+  let hljs = require('highlight.js');
+  import '../../../static/css/gruvbox-light.css';
 
-export default {
-  name: "DetailInfo",
-  data() {
-    return {
-      articleInfo: '',
-      body: '',
-    }
-  },
-  methods: {
-    loadArticle() {
-      this.axios.get(cons.apis + '/article/detail/' + this.$route.params.id, {
-        headers: {
-          'Authorization': '123'
-        },
-        responseType: 'json',
-      })
-        .then(dat => {
-          this.articleInfo = dat.data;
-          this.body = dat.data.body;
-        }).catch(err => {
-        console.log(err.response);
-      });
-    },
-    love(id) {
-      this.axios.put(cons.apis + '/article/love/' + id, {
-        headers: {
-          'Authorization': '123'
-        },
-        responseType: 'json',
-      })
-        .then(dat => {
-          this.articleInfo.loves = dat.data.loves;
-        }).catch(err => {
-        console.log(err.response);
-      });
-    },
-  },
-  mounted() {
-    this.loadArticle();
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
-      highlight: function (code, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-          return hljs.highlight(lang, code, true).value;
-        } else {
-          return hljs.highlightAuto(code).value;
-        }
+  export default {
+    name: "DetailInfo",
+    data() {
+      return {
+        articleInfo: '',
+        body: '',
       }
-    });
-    this.body = marked(this.body);
-  },
-}
+    },
+    methods: {
+      loadArticle() {
+        this.axios.get(cons.apis + '/article/detail/' + this.$route.params.id, {
+          headers: {
+            'Authorization': '123'
+          },
+          responseType: 'json',
+        })
+          .then(dat => {
+            this.articleInfo = dat.data;
+            this.body = dat.data.body;
+          }).catch(err => {
+          console.log(err.response);
+        });
+      },
+      love(id) {
+        this.axios.put(cons.apis + '/article/love/' + id, {
+          headers: {
+            'Authorization': '123'
+          },
+          responseType: 'json',
+        })
+          .then(dat => {
+            this.articleInfo.loves = dat.data.loves;
+          }).catch(err => {
+          console.log(err.response);
+        });
+      },
+    },
+    mounted() {
+      this.loadArticle();
+      marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        highlight: function (code, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            return hljs.highlight(lang, code, true).value;
+          } else {
+            return hljs.highlightAuto(code).value;
+          }
+        }
+      });
+      this.body = marked(this.body);
+    },
+  }
 
 
 </script>

@@ -1,24 +1,24 @@
 <template>
-  <div class="category-container">
+  <div class="list-container">
     <SpeedBar></SpeedBar>
-    <CategoryWarp></CategoryWarp>
+    <ListWarp></ListWarp>
   </div>
 </template>
 
 <script>
-  const CategoryWarp = () => import("./CategoryWarp");
+  const ListWarp = () => import("./ListWarp");
   const SpeedBar = () => import("../container/SpeedBar");
   export default {
-    name: "CategoryContainer",
+    name: "ListContainer",
     components: {
       "SpeedBar": SpeedBar,
-      "CategoryWarp": CategoryWarp
+      "ListWarp": ListWarp
     }
   }
 </script>
 
 <style scoped>
-  .category-container {
+  .list-container {
     width: 1200px;
     margin: auto;
     margin-bottom: 10px;

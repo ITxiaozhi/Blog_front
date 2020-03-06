@@ -1,27 +1,27 @@
 <template>
-  <div class="category-page">
+  <div class="list-page">
     <SimpleHeader></SimpleHeader>
-    <CategoryContainer></CategoryContainer>
+    <ListContainer></ListContainer>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
   const SimpleHeader = () => import("../header/SimpleHeader");
-  const CategoryContainer = () => import("./CategoryContainer");
+  const ListContainer = () => import("./ListContainer");
   const Footer = () => import("../footer/Footer");
   export default {
-    name: "CategoryPage",
+    name: "ListPage",
     components: {
       "SimpleHeader": SimpleHeader,
-      "CategoryContainer": CategoryContainer,
+      "ListContainer": ListContainer,
       "Footer": Footer
     }
   }
 </script>
 
 <style scoped>
-  .category-page {
+  .list-page {
     display: flex;
     box-sizing: border-box;
     min-height: 100%;
