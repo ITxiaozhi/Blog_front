@@ -4,7 +4,7 @@ import Router from 'vue-router'
 const Index = () => import("@/components/index/Index")
 const DetailPage = () => import("@/components/detail/DetailPage")
 const ListPage = () => import("@/components/list/ListPage")
-// import test from '../components/Test.vue'
+const AboutPage = () => import("@/components/about/AboutPage")
 
 // 重写路由跳转方法
 const routerPush = Router.prototype.push
@@ -29,6 +29,11 @@ export default new Router({
       path: '/list/:name/:value',
       name: 'ListPage',
       component: ListPage
+    },
+    {
+      path: '/about',
+      name: 'AboutPage',
+      component: AboutPage
     },
   ]
 })

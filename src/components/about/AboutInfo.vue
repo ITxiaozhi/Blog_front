@@ -1,18 +1,5 @@
 <template>
-  <div class="detail-info">
-    <div class="header">
-      <h1 class="title">{{articleInfo.title}}</h1>
-      <div class="auth-info">
-        <i class="iconfont iconshijian1"></i>
-        <span>{{articleInfo.create_date|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
-        <span>|</span>
-        <i class="iconfont iconliulan2"></i>
-        <span>{{articleInfo.views}}人阅读</span>
-        <span>|</span>
-        <i class="iconfont iconxiai1" @click="love(articleInfo.id)"></i>
-        <span>{{articleInfo.loves}}人喜爱</span>
-      </div>
-    </div>
+  <div class="about-info">
     <div class="hljs" ref="hlDiv" v-html="body" v-highlight></div>
   </div>
 </template>
@@ -25,44 +12,29 @@
   import '../../../static/css/gruvbox-light.css';
 
   export default {
-    name: "DetailInfo",
+    name: "AboutInfo",
     data() {
       return {
-        articleInfo: '',
         body: '',
       }
     },
     methods: {
-      loadArticle() {
-        this.axios.get(cons.apis + '/article/detail/' + this.$route.params.id, {
+      loadAbout() {
+        this.axios.get(cons.apis + '/blog/about', {
           headers: {
             'Authorization': '123'
           },
           responseType: 'json',
         })
           .then(dat => {
-            this.articleInfo = dat.data;
             this.body = dat.data.body;
-          }).catch(err => {
-          console.log(err.response);
-        });
-      },
-      love(id) {
-        this.axios.put(cons.apis + '/article/love/' + id, {
-          headers: {
-            'Authorization': '123'
-          },
-          responseType: 'json',
-        })
-          .then(dat => {
-            this.articleInfo.loves = dat.data.loves;
           }).catch(err => {
           console.log(err.response);
         });
       },
     },
     mounted() {
-      this.loadArticle();
+      this.loadAbout();
       marked.setOptions({
         renderer: new marked.Renderer(),
         gfm: true,
@@ -83,12 +55,10 @@
       this.body = marked(this.body);
     },
   }
-
-
 </script>
 
 <style scoped>
-  .detail-info {
+  .about-info {
     display: flex;
     flex-direction: column;
     width: 856px;
@@ -96,40 +66,6 @@
     height: auto;
     flex: 1;
 
-  }
-
-  .detail-info div {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .header {
-    background-color: white;
-  }
-
-  .title {
-    width: 100%;
-    height: auto;
-    font-size: 28px;
-    word-wrap: break-word;
-    color: #000;
-    padding: 30px 20px;
-
-  }
-
-  .auth-info {
-    width: 100%;
-    height: auto;
-    padding: 0 20px;
-    color: #777;
-  }
-
-  .auth-info span {
-    margin-right: 5px;
-  }
-
-  .iconxiai1 {
-    cursor: pointer;
   }
 
   /*以下是Markdown文本样式*/

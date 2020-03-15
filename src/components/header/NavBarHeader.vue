@@ -15,7 +15,7 @@
               @click="jump('/list/category/'+ category.name)"><a>{{category.name}}</a></li>
         </ul>
       </li>
-      <li class="menu" @click="jump('/')">关于自己</li>
+      <li class="menu" @click="jump('/about')">关于自己</li>
       <li class="menu" @click="jump('/')">给我留言</li>
       <li class="menu" @click="jump('/')">赞助作者</li>
       <li class="menu" @click="jump('/')">时间轴</li>

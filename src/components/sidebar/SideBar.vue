@@ -21,7 +21,7 @@
 
 <style scoped>
   .side-bar {
-    background-color: coral;
+    /*background-color: coral;*/
     /*right: 61.5px;*/
     /*width: 340px;*/
     display: flex;

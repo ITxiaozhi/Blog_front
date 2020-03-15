@@ -11,7 +11,7 @@
       </div>
       <div class="auth-info">
         <i class="iconfont iconshijian1"></i>
-        <span>{{article.update_date|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
+        <span>{{article.create_date|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
         <span>|</span>
         <i class="iconfont iconliulan2"></i>
         <span>{{article.views}}人阅读</span>
@@ -20,6 +20,15 @@
         <span>{{article.loves}}人喜爱</span>
       </div>
     </div>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-count="pages"
+      :current-page="page"
+      style="text-align:center;margin-top:10px"
+      @current-change="fnGetPage"
+    >
+    </el-pagination>
   </div>
   <div v-else>还没有文章</div>
 </template>
@@ -31,27 +40,40 @@
     name: "ArticleWarp",
     data() {
       return {
-        test: 123,
         article_list: [],
         has_article: false,
+        page:1,
+        pages:8,
+        pagesize:10,
       }
     },
     methods: {
-      loadArticleList() {
-        this.axios.get(cons.apis + '/article/list/?ordering=-create_date', {
+      loadArticleList(num) {
+        this.axios.get(cons.apis + '/article/list/', {
           headers: {
             'Authorization': '123'
+          },
+          params:{
+            page:num,
+            pagesize:this.pagesize,
+            ordering:'-create_date'
           },
           responseType: 'json',
         })
           .then(dat => {
             if (dat.data) {
-              this.article_list = dat.data;
+              this.article_list = dat.data.lists;
               this.has_article = true;
+              this.page = dat.data.page;
+              this.pages = dat.data.pages;
             }
           }).catch(err => {
           console.log(err.response);
         });
+      },
+      fnGetPage(dat){
+        this.page = dat;
+        this.loadArticleList(this.page);
       },
       jump(id) {
         this.$router.push('/detail/' + id);
@@ -71,7 +93,7 @@
       },
     },
     mounted() {
-      this.loadArticleList();
+      this.loadArticleList(1);
     },
   }
 

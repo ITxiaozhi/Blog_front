@@ -11,7 +11,7 @@
       </div>
       <div class="auth-info">
         <i class="iconfont iconshijian1"></i>
-        <span>{{article.update_date|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
+        <span>{{article.create_date|dateformat('YYYY-MM-DD HH:mm:ss')}}</span>
         <span>|</span>
         <i class="iconfont iconliulan2"></i>
         <span>{{article.views}}人阅读</span>
@@ -20,6 +20,15 @@
         <span>{{article.loves}}人喜爱</span>
       </div>
     </div>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-count="pages"
+      :current-page="page"
+      style="text-align:center;margin-top:10px"
+      @current-change="fnGetPage"
+    >
+    </el-pagination>
   </div>
 </template>
 
@@ -31,13 +40,15 @@
     data() {
       return {
         article_list: [],
-        category_name: ''
+        page:1,
+        pages:8,
+        pagesize:10,
       }
     },
     watch: {
       '$route'(to, from) { // 监听路由是否变化
         if (this.$route.params.name) {
-          this.loadArticle() // 重新加载数据
+          this.loadArticle(1) // 重新加载数据
         }
       }
     },
@@ -45,23 +56,32 @@
       jump(route) {
         this.$router.push(route);
       },
-      loadArticle() {
+      loadArticle(num) {
         this.axios.get(cons.apis + '/article/' + this.$route.params.name + '/' + this.$route.params.value, {
           headers: {
             'Authorization': '123'
+          },
+          params:{
+            page:num,
+            pagesize:this.pagesize
           },
           responseType: 'json',
         })
           .then(dat => {
             if (dat.data) {
-              this.article_list = dat.data;
-              this.has_article = true
+              this.article_list = dat.data.lists;
+              this.page = dat.data.page;
+              this.pages = dat.data.pages;
             }
           }).catch(err => {
           console.log(err.response);
         });
       },
-      love(id) {
+      fnGetPage(dat){
+        this.page = dat;
+        this.loadArticle(this.page);
+      },
+      love(id, index) {
         this.axios.put(cons.apis + '/article/love/' + id, {
           headers: {
             'Authorization': '123'
@@ -69,14 +89,14 @@
           responseType: 'json',
         })
           .then(dat => {
-            this.articleInfo.loves = dat.data.loves;
+            this.article_list[index].loves = dat.data.loves;
           }).catch(err => {
           console.log(err.response);
         });
       },
     },
     mounted() {
-      this.loadArticle();
+      this.loadArticle(1);
     },
   }
 </script>
@@ -87,6 +107,7 @@
     flex-direction: column;
     flex: 1;
     width: 100%;
+    margin-top: 10px;
   }
 
   .article {

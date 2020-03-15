@@ -6,10 +6,13 @@ import router from './router'
 import axios from 'axios'
 import VueHighlightJS from 'highlight.js'
 import moment from 'moment'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.use(VueHighlightJS)
+Vue.use(ElementUI);
 
 // 文章代码高亮
 Vue.directive('highlight', (el) => {

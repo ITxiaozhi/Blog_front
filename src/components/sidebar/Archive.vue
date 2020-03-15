@@ -75,7 +75,9 @@
     opacity: .7;
     text-align: center;
     filter: alpha(opacity=80);
-    color: #00a67c;
+    color: #fff;
+    background-color: #00a67c;
+    /*color: #00a67c;*/
     /*background-color: #00a67c;*/
     display: inline-block;
     margin-top: 5px;
