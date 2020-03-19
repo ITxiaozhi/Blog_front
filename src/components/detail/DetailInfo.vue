@@ -13,7 +13,9 @@
         <span>{{articleInfo.loves}}人喜爱</span>
       </div>
     </div>
-    <div class="hljs" ref="hlDiv" v-html="body" v-highlight></div>
+    <div class="detail">
+      <div class="hljs" ref="hlDiv" v-html="body" v-highlight></div>
+    </div>
   </div>
 </template>
 
@@ -99,7 +101,6 @@
   }
 
   .detail-info div {
-    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -131,7 +132,10 @@
   .iconxiai1 {
     cursor: pointer;
   }
-
+  .detail {
+    padding: 5px 10px;
+    background-color: white;
+  }
   /*以下是Markdown文本样式*/
   >>> .hljs pre code {
     background-color: #eae1e1;

@@ -21,13 +21,9 @@
 
 <style scoped>
   .side-bar {
-    /*background-color: coral;*/
-    /*right: 61.5px;*/
-    /*width: 340px;*/
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
-    /*width: 100%;*/
+    padding-left: 20px;
     width: 330px;
   }
 </style>

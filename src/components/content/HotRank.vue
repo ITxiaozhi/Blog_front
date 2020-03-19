@@ -54,11 +54,10 @@
 <style scoped>
   .hotrank {
     background-color: white;
-    height: 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin: 10px 0 10px 0;
+    margin-bottom: 10px;
   }
 
   .hotrank h2 {

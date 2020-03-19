@@ -105,6 +105,7 @@
     flex-direction: column;
     flex: 1;
     width: 100%;
+    margin-bottom: 10px;
   }
 
   .article {

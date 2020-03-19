@@ -7,8 +7,6 @@ Gruvbox style (light) (c) Pavel Pertsev (original style at https://github.com/mo
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 5px 10px;
-  background-color: white;
 }
 
 .hljs,

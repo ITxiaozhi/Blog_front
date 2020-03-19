@@ -62,10 +62,10 @@
     display: flex;
     flex-direction: column;
     width: 856px;
-    padding: 0;
     height: auto;
     flex: 1;
-
+    padding: 5px 10px;
+    background-color: white;
   }
 
   /*以下是Markdown文本样式*/

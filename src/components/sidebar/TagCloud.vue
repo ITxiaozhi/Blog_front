@@ -44,7 +44,6 @@
 
 <style scoped>
   .tag-cloud {
-    margin-bottom: 10px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
