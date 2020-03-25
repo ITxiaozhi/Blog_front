@@ -11,32 +11,32 @@
 </template>
 
 <script>
-  import cons from '@/components/constant';
+  import cons from '@/components/constant'
 
   export default {
-    name: "Messages",
-    data() {
+    name: 'Messages',
+    data () {
       return {
         info: ''
       }
     },
     methods: {
-      submit() {
+      submit () {
         if (!this.info) {
-          alert("请输入留言信息");
+          alert('请输入留言信息')
         } else {
-          this.axios.post(cons.apis + '/blog/message/', {"body": this.info, "create_date": new Date()}, {
+          this.axios.post(cons.apis + '/blog/message/', {'body': this.info, 'create_date': new Date()}, {
             headers: {
               'Authorization': '123'
             },
             responseType: 'json',
           })
             .then(dat => {
-              alert('您的留言提交成功，谢谢您的支持！');
+              alert('您的留言提交成功，谢谢您的支持！')
               this.info = ''
             }).catch(err => {
-            console.log(err.response);
-          });
+            console.log(err.response)
+          })
         }
       },
     },
@@ -52,11 +52,11 @@
 
   .message-warp .explan {
     font-size: 16px;
-    margin: 10px 5px;
+    margin: 10px 10px;
   }
 
   .message-warp .info {
-    margin: 5px 5px;
+    margin: 5px 10px;
     display: block;
     resize: vertical;
     padding: 5px 15px;
@@ -72,11 +72,6 @@
     border-radius: 4px;
     -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
     transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
-  }
-
-  .sub {
-    width: 100%;
-    text-align: center;
   }
 
   .sub button {
@@ -98,7 +93,6 @@
     border-radius: 4px;
     color: #FFF;
     background-color: #67C23A;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 10px 0 20px 10px;
   }
 </style>

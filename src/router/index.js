@@ -6,6 +6,7 @@ const DetailPage = () => import("@/components/detail/DetailPage")
 const ListPage = () => import("@/components/list/ListPage")
 const AboutPage = () => import("@/components/about/AboutPage")
 const MessagePage = () => import("@/components/message/MessagePage")
+const SponsorPage = () => import("@/components/sponsor/SponsorPage")
 
 // 重写路由跳转方法
 const routerPush = Router.prototype.push
@@ -40,6 +41,11 @@ export default new Router({
       path: '/message',
       name: 'MessagePage',
       component: MessagePage
+    },
+    {
+      path: '/sponsor',
+      name: 'SponsorPage',
+      component: SponsorPage
     },
   ]
 })
