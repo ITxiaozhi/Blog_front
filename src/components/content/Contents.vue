@@ -22,7 +22,7 @@
   .content {
     display: flex;
     flex-direction: column;
-    width: 856px;
+    width: 870px;
     padding: 0;
   }
 </style>

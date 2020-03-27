@@ -61,7 +61,7 @@
   .about-info {
     display: flex;
     flex-direction: column;
-    width: 856px;
+    width: 870px;
     height: auto;
     flex: 1;
     padding: 5px 10px;

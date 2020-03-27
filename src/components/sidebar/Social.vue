@@ -24,8 +24,7 @@
   }
 
   .icon1 {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px auto;
     text-decoration: none;
   }
 

@@ -106,7 +106,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 100%;
+    width: 870px;
   }
 
   .article {

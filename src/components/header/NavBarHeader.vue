@@ -18,7 +18,7 @@
       <li class="menu" @click="jump('/about')">关于自己</li>
       <li class="menu" @click="jump('/message')">给我留言</li>
       <li class="menu" @click="jump('/sponsor')">赞助作者</li>
-      <li class="menu" @click="jump('/')">时间轴</li>
+      <li class="menu" @click="jump('/timeline')">时间轴</li>
     </ul>
     <div>
       <input class="search-input" placeholder="请输入关键字">

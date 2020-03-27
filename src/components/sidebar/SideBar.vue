@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 20px;
-    width: 330px;
+    min-width: 310px;
+    max-width: 310px;
   }
 </style>
