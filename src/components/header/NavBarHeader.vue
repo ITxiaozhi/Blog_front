@@ -21,10 +21,10 @@
       <li class="menu" @click="jump('/timeline')">时间轴</li>
     </ul>
     <div>
-      <input class="search-input" placeholder="请输入关键字">
+      <input class="search-input" v-model="input" placeholder="请输入关键字">
     </div>
     <div class="toggle-search active">
-      <i class="iconfont iconsousuo"></i>
+      <i class="iconfont iconsousuo" @click="jump('/list/search/'+ input)"></i>
     </div>
   </div>
 </template>

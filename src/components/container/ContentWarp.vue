@@ -21,5 +21,6 @@
     flex-direction: row;
     width: 100%;
     margin-top: 10px;
+    flex: 1;
   }
 </style>

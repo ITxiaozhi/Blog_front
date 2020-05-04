@@ -7,7 +7,7 @@
         <p ref='circular'></p>
         <p @click="jump('/detail/'+article.id)">{{article.title}}</p>
       </div>
-      <div class='img-dotted' ref='dotted'></div>
+      <div class='img-dotted' ref='dotted' :style='dotted'></div>
     </div>
     <div style='margin-top:20px;'>
     </div>
@@ -22,6 +22,10 @@
     data () {
       return {
         article_list: [],
+        dotted: {
+                backgroundImage: "url(" + require("../../assets/dotted.png") + ")",
+                backgroundRepeat: "no-repeat"
+            }
       }
     },
     methods: {
@@ -55,6 +59,7 @@
   .time {
     width: 870px;
     background-color: white;
+    padding: 0 20px;
   }
 
 
@@ -94,9 +99,9 @@
     position: absolute;
     left: 130px;
     padding: 10px;
-    background: #317EF3;
+    background: #317ef352;
     font-size: .8rem;
-    color: #fff;
+    color: #cd2600;
     border-radius: 10px;
     cursor: pointer;
   }
@@ -107,7 +112,6 @@
     height: 100%;
     top: 0;
     z-index: 1;
-    background: url("../../assets/dotted.png");
   }
 
 </style>

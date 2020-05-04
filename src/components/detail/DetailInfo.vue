@@ -133,7 +133,7 @@
     cursor: pointer;
   }
   .detail {
-    padding: 5px 10px;
+    padding: 5px 20px;
     background-color: white;
   }
   /*以下是Markdown文本样式*/
@@ -161,7 +161,7 @@
   }
 
   >>> .hljs p {
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   >>> .hljs h1 {

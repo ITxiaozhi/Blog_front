@@ -48,6 +48,9 @@
     width: 100%;
     min-height: 100%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .message-warp .explan {

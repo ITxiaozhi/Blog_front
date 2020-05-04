@@ -20,5 +20,6 @@
     flex-direction: row;
     width: 100%;
     margin: 10px 0;
+    flex: 1;
   }
 </style>

@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex: 1;
   }
   .sponsor .title{
     width: 100%;

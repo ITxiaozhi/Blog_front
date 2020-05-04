@@ -1,7 +1,7 @@
 <template>
   <div class="side-bar">
     <Social></Social>
-    <HotSubject></HotSubject>
+<!--    <HotSubject></HotSubject>-->
     <Archive></Archive>
     <TagCloud></TagCloud>
   </div>

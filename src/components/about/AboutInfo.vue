@@ -64,7 +64,7 @@
     width: 870px;
     height: auto;
     flex: 1;
-    padding: 5px 10px;
+    padding: 5px 20px;
     background-color: white;
   }
 

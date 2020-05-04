@@ -17,7 +17,6 @@ Vue.use(ElementUI);
 // 文章代码高亮
 Vue.directive('highlight', (el) => {
   let blocks = el.querySelectorAll('pre code')
-  console.log('hehe')
   blocks.forEach((block) => {
     VueHighlightJS.highlightBlock(block)
   })
