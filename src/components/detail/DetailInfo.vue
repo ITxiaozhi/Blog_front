@@ -145,6 +145,18 @@
     background-color: #eae1e1;
   }
 
+  >>> .hljs p code {
+    margin-left: 5px;
+    margin-right: 4px;
+    border: 1px solid #ddd;
+    background: #f6f6f6;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #c7254e;
+    white-space: nowrap;
+  }
+
   >>> .hljs h1, h2, h3, h4 {
     color: #111111;
     font-weight: 400;
@@ -166,12 +178,12 @@
 
   >>> .hljs h1 {
     font-size: 48px;
-    line-height: 54px;
+    line-height: 64px;
   }
 
   >>> .hljs h2 {
     font-size: 36px;
-    line-height: 42px;
+    line-height: 62px;
   }
 
   >>> .hljs h1, h2 {
@@ -181,17 +193,17 @@
 
   >>> .hljs h3 {
     font-size: 24px;
-    line-height: 30px;
+    line-height: 60px;
   }
 
   >>> .hljs h4 {
     font-size: 21px;
-    line-height: 26px;
+    line-height: 56px;
   }
 
   >>> .hljs h5 {
     font-size: 18px;
-    line-height: 23px;
+    line-height: 53px;
   }
 
   >>> .hljs a {
@@ -548,5 +560,9 @@
     -moz-border-radius: 0 0 6px 0;
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
+  }
+
+  >>> .hljs img {
+    max-width: 100%;
   }
 </style>

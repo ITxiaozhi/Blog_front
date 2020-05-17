@@ -27,6 +27,5 @@
     box-sizing: border-box;
     min-height: 100%;
     flex-direction: column;
-    /*position: relative;*/
   }
 </style>
