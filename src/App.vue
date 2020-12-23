@@ -2,6 +2,9 @@
   <div id="app">
 <!--    <img src="./assets/logo.png">-->
     <router-view/>
+    <template>
+        <el-backtop></el-backtop>
+    </template>
   </div>
 </template>
 
